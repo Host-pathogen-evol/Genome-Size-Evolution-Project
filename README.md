@@ -1,4 +1,4 @@
 
-#Welcome to the Host-Pathogen evolution pages.
+#Genome Length Evolution in Host-Pathogen systems.
 
 This is a readme *Hello World*
