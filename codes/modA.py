@@ -9,3 +9,4 @@ import scoresinit
 import hilla
 import hillb
 import calcwij
+import genomeinit
