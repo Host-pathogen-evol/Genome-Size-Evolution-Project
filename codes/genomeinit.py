@@ -6,7 +6,7 @@ def GENOMEINIT(Neff,Kp,rk,LNPRT,HP,HST,HILLPAR):
   go={}
 
   hx=neweffectorlist.NEWEFFECTORLIST(Neff,Kp,rk)
-  print hx
+  #print hx
   import newpathogenunita
   for i in hx:
     go[i]=newpathogenunita.NEWPATHOGENUNITA(i,rk,LNPRT)

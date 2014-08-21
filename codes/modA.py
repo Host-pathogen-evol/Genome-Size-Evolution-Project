@@ -10,3 +10,5 @@ import hilla
 import hillb
 import calcwij
 import genomeinit
+import prtgenome
+import getwksum
