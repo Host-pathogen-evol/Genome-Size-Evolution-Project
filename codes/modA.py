@@ -12,3 +12,5 @@ import calcwij
 import genomeinit
 import prtgenome
 import getwksum
+import getlength
+import trates
