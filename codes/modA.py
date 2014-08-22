@@ -14,3 +14,4 @@ import prtgenome
 import getwksum
 import getlength
 import trates
+import genetrans
