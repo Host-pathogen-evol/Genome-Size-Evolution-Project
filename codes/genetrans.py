@@ -1,7 +1,7 @@
 def GENETRANS(ng,nt,Gk,H,hll,hllb,rk):
   import calcwij
-  print ng
-  print nt
+  #print ng
+  #print nt
 #rn 0 ei->ei'
 #rn 1 ei->ei+ei
 #rn 2 ei->eo
@@ -11,7 +11,7 @@ def GENETRANS(ng,nt,Gk,H,hll,hllb,rk):
       if (mu<ng) or (mu>ng):
         Gnmod[mu]=Gk[mu]
       if mu==ng:
-        sigl=0.001 ####this is a std for the scire move Here 1000 is the Lo in li/Lo for the ds std in  s'=s+ds !!!!
+        sigl=0.001 ####this is a std for the scores move Here 1000 is the Lo in li/Lo for the ds std in  s'=s+ds !!!!
         skx=Gk[ng][3]
         sijn={}
         for sj in skx.keys():
@@ -46,27 +46,27 @@ def GENETRANS(ng,nt,Gk,H,hll,hllb,rk):
 
   if nt==1:
   #print("UNO")
-    for mu in Gn.keys():
-      if mu<gn:
-        Gnmod[mu]=Gn[mu]
+    for mu in Gk.keys():
+      if mu<ng:
+        Gnmod[mu]=Gk[mu]
       if mu==ng:
-        Gnmod[mu]=Gn[mu]
-        Gnmod[mu+1]=Gn[mu]
+        Gnmod[mu]=Gk[mu]
+        Gnmod[mu+1]=Gk[mu]
       if mu>ng:
-        Gnmod[mu+1]=Gn[mu]
+        Gnmod[mu+1]=Gk[mu]
   if nt==2:
     #print("DOS")
     for mu in Gk.keys():
       if mu<ng or mu>ng:
-        Gnmod[mu]=Gn[mu]
+        Gnmod[mu]=Gk[mu]
       if mu==ng:
         gx=[]
-        gx.append('SL'+Gn[ng][0])
-        gx.append(Gn[ng][1])
-        lij=rk.uniform()*Gn[ng][2]
+        gx.append('SL'+Gk[ng][0])
+        gx.append(Gk[ng][1])
+        lij=rk.uniform()*Gk[ng][2]
         gx.append(lij)
         snu={}
-        for ik in Gn[ng][3].keys():
+        for ik in Gk[ng][3].keys():
           snu[ik]=0.000001
         gx.append(snu)
         wijm=calcwij.CALCWIJ(snu,H,hll,lij,hllb)
