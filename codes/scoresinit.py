@@ -7,7 +7,7 @@ def SCORESINIT(adij,rk):
       #sij.append(0.0)
     if i==1:
       #sij.append(rk.uniform.pos())
-      sij[n]=rk.uniform_pos()
+      sij[n]=1.0*rk.uniform_pos()
     n=n+1
 
   return sij

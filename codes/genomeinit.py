@@ -4,9 +4,9 @@ def GENOMEINIT(Neff,Kp,rk,LNPRT,HP,HST,HILLPAR,HILLLI):
   import scoresinit
   import calcwij
   go={}
-  print("fix for the genome list")
+  #print("fix for the genome list")
   hx=neweffectorlist.NEWEFFECTORLIST(Neff,Kp,rk)
-  print hx
+  #print hx
   #raw_input()
   import newpathogenunita
   for i in range(len(hx)):
