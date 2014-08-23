@@ -11,7 +11,7 @@ def GENETRANS(ng,nt,Gk,H,hll,hllb,rk):
       if (mu<ng) or (mu>ng):
         Gnmod[mu]=Gk[mu]
       if mu==ng:
-        sigl=0.001 ####this is a std for the scores move Here 1000 is the Lo in li/Lo for the ds std in  s'=s+ds !!!!
+        sigl=0.001 ####this is a std for the scores move  s'=s+ds !!!!
         skx=Gk[ng][3]
         sijn={}
         for sj in skx.keys():
