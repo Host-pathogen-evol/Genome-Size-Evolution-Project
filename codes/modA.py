@@ -19,3 +19,4 @@ import jumpchange
 import gspsum
 import gsptime
 import gspreactselect
+import popupdate
