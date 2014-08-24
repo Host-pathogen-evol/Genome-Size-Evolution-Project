@@ -16,3 +16,6 @@ import getlength
 import trates
 import genetrans
 import jumpchange
+import gspsum
+import gsptime
+import gspreactselect
