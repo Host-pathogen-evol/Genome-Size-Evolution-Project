@@ -9,7 +9,7 @@ def SORTPTNF(Pt,jmp):
     if len(Pt[i])>tmax:
       tmax=len(Pt[i])
 
-  print tmax
+  #print tmax
   tn=[]
   RPR={}
   tn=range(tmax)
@@ -21,7 +21,7 @@ def SORTPTNF(Pt,jmp):
     for j in range(len(Pt[i])):
       yt.append(Pt[i][j])
 
-    print len(yt)
+    #print len(yt)
     RPR[i]=yt
 
   return RPR
