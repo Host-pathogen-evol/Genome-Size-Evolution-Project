@@ -1,4 +1,21 @@
+import jumpchangete
+import inigenomete
+import dctcpy
+import nutegnome
+import gsprte
+import taugente
+import trpste
+import trateste
+import popteupdate
+import genetranste
 import newhost
+import newhostcorr
+import newhostvarl
+import inigenome
+import inigenomew
+import getwksumte
+import getlengthste
+#import calcwijtes
 import hypercube
 import prtcube
 import hpmatrix
@@ -22,3 +39,4 @@ import gspreactselect
 import popupdate
 import totpop
 import sortptnf
+import hypercubekl
