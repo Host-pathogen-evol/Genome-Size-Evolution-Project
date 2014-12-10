@@ -8,10 +8,10 @@ def JUMPCHANGETE(Go,Hx,hillpta,hillptb):
   for k in Go.keys():
 
     Gjump=[]
-    Gjump[0].append(Go[k][0])
-    Gjump[1].append(Go[k][1])
-    Gjump[2].append(Go[k][2])
-    Gjump[3].append(Go[k][3])
+    Gjump.append(Go[k][0])
+    Gjump.append(Go[k][1])
+    Gjump.append(Go[k][2])
+    Gjump.append(Go[k][3])
 
     if Go[k][0]=="EFFON":
       wn={}
@@ -23,10 +23,10 @@ def JUMPCHANGETE(Go,Hx,hillpta,hillptb):
           lo=hillptb[0]
           wij=hilla.HILLA(sij,so,hn,1.0)#*hillb.HILLB(l,lo,2)
           wn[sij]=wij
-          else:
+        else:
             wn[sij]=0.0
           #wij=hilla.HILLA(s,so,hn,1.0)*hillb.HILLB(l,lo,2)
-      Gjump[4].append(wn)
+      Gjump.append(wn)
 
     GJMP[k]=Gjump
 
