@@ -142,7 +142,7 @@ for i in HSTa:
     if jmp>0:
         lbjmp=[]
         sxb=0
-        Njmin=max(N)
+        #Njmin=max(N)
         for i in Nr.keys():
             if Nr[i]>Njmin:
                 lbjmp.append(i)
@@ -159,6 +159,9 @@ for i in HSTa:
             Nnewx={}
             for lk in lbjmp:
                 sn="jmp"+str(jmp)+"gen"+str(tk)+"strn"+str(strn)
+		#print lk 
+		#print sn
+		#raw_input()
                 Zn={}
                 Zn=mda.jumpchangete.JUMPCHANGETE(Gr[lk],Hx,hlpt,lohills)
                 Wnx=mda.getwksumte.GETWKSUMTE(Zn,C*LH)
@@ -166,21 +169,21 @@ for i in HSTa:
                 Gnewx[sn]=Zn
                 Fnewx[sn]=Fnx
                 Nnewx[sn]=Nr[lk]
-                Gr={}
-                Fr={}
-                Nr={}
-                for jn in Gnewx.keys():
-                    x=[]
-                    x=copy.deepcopy(Gnewx[jn])
-                    y=[]
-                    y=copy.deepcopy(Fnewx[jn])
-                    z=[]
-                    z=copy.deepcopy(Nnewx[jn])
-                    Gr[jn]=x
-                    Fr[jn]=y
-                    Nr[jn]=z
-                    LNSo=mda.getlengthste.GETLENGTHSTE(Gr[jn])
-                    Lr[jn]=LNSo
+            Gr={}
+            Fr={}
+            Nr={}
+            for jn in Gnewx.keys():
+                x=[]
+                x=copy.deepcopy(Gnewx[jn])
+                y=[]
+                y=copy.deepcopy(Fnewx[jn])
+                z=[]
+                z=copy.deepcopy(Nnewx[jn])
+                Gr[jn]=x
+                Fr[jn]=y
+                Nr[jn]=z
+                LNSo=mda.getlengthste.GETLENGTHSTE(Gr[jn])
+                Lr[jn]=LNSo
 
     qx='FALSE'
     tk=0
@@ -282,8 +285,9 @@ for i in HSTa:
     pickle.dump(Gr,open(sgens,"wb"))
     ##pickle.dump(Tr,open(sreacts,"wb"))
     pickle.dump(Nr,open(spops2,"wb"))
-    pickle.dump(SN,open(sumpops,"wb"))
+    #pickle.dump(SN,open(sumpops,"wb"))
 
     jmp+=1
+    print jmp
     ############################
 print ("COMPLETED")
