@@ -10,7 +10,7 @@ import pickle
 import copy
 ##############################
 #Constants and Parameters
-SEED=987654320
+SEED=987654321
 rk=rn.rng()
 rk.set(SEED)
 LH=30 #HOST LENGTH
@@ -27,7 +27,7 @@ LNPRT=[lnsigma,lnmean]
 lohilleff=8000
 lohilltes=5*lohilleff
 lohills=[lohilleff,lohilltes]
-Ngen=5000
+Ngen=1000
 #####################################
 mua=1e-5
 mub=mua
@@ -35,17 +35,17 @@ muc=mua
 mud=mua
 mue=mua
 muf=mua
-mug=mua
-muh=mua
+mug=10.0*mua
+muh=mua/100.0
 MU=[mua,mub,muc,mud,mue,muf,mug,muh]
 #####################################
 bnh=1.0 #Saturation Parameter, check an tune this
 Nh=1e6
 NJMPS=10
-Njmin=1e3
+Njmin=1e4
 No=1.0
 
-Ngo=10 #number of genes
+Ngo=20 #number of genes
 Tefrac=0.2 #fraction of tes
 
 ##############################
@@ -56,6 +56,7 @@ Fr={} #Rep Rates
 Tr={} #Transition Rates
 Lr={} #Lengths
 #Neff={} #Number of effs
+tree={}
 #Nte={}  #Number of tes
 #Nrloc={}
 ##############################
@@ -81,6 +82,13 @@ for j in range(1,NJMPS):
     #print HSTa[j]
     #print HSTb[j]
     #print HSTc[j]
+
+    #raw_input()
+hostsa="newkerneltest/HOSTSa.p"
+pickle.dump(HSTa,open(hostsa,"wb"))
+
+hostsb="newkerneltest/HOSTSb.p"
+pickle.dump(HSTb,open(hostsb,"wb"))
 
 #raw_input()
 ##############################
@@ -115,9 +123,11 @@ Tr={} #Transition Rates
 Lr={} #Lengths
 
 jmp=0
+outk=0
 for i in HSTa:
 
     Hx=HSTa[i]
+    print Hx
     qx='FALSE'
     tk=0
 
@@ -129,7 +139,7 @@ for i in HSTa:
         Fo=Go[0]
         LNSo=mda.getlengthste.GETLENGTHSTE(Gox)
         strn=0
-        sn="jmp"+str(jmp)+"gen"+str(tk)+"strn"+str(strn)
+        sn="jmp"+str(jmp)+"gen"+str(int(tk))+"strn"+str(strn)
         Gr[sn]=Gox
         Fr[sn]=Fo
         Lr[sn]=LNSo
@@ -140,16 +150,20 @@ for i in HSTa:
         Nall[sn]=popx
 
     if jmp>0:
+        print("jump in progress")
+        print("jump number: %d\n"%jmp)
         lbjmp=[]
         sxb=0
+        wmax=max(Fr.values())
         #Njmin=max(N)
-        for i in Nr.keys():
-            if Nr[i]>Njmin:
-                lbjmp.append(i)
+        for ki in Nr.keys():
+            if Nr[ki]>Njmin or Fr[ki]==wmax:
+                lbjmp.append(ki)
                 sxb=1
 
         if sxb==0:
             print("JUMP UNSUCCESFULL-A")
+            outk=1
             break
         else:
             Nall={}
@@ -158,10 +172,7 @@ for i in HSTa:
             Fnewx={}
             Nnewx={}
             for lk in lbjmp:
-                sn="jmp"+str(jmp)+"gen"+str(tk)+"strn"+str(strn)
-		#print lk 
-		#print sn
-		#raw_input()
+                sn="jmp"+str(jmp)+"gen"+str(int(tk))+"strn"+str(strn)
                 Zn={}
                 Zn=mda.jumpchangete.JUMPCHANGETE(Gr[lk],Hx,hlpt,lohills)
                 Wnx=mda.getwksumte.GETWKSUMTE(Zn,C*LH)
@@ -169,6 +180,7 @@ for i in HSTa:
                 Gnewx[sn]=Zn
                 Fnewx[sn]=Fnx
                 Nnewx[sn]=Nr[lk]
+                strn+=1
             Gr={}
             Fr={}
             Nr={}
@@ -184,9 +196,14 @@ for i in HSTa:
                 Nr[jn]=z
                 LNSo=mda.getlengthste.GETLENGTHSTE(Gr[jn])
                 Lr[jn]=LNSo
+        print("jump completed")
 
-    qx='FALSE'
-    tk=0
+    if(outk==1):
+        qx='TRUE'
+        break
+    ##else:
+    ##    qx='FALSE'
+    #tk=0
 
     #########################
     #In between jumps loop  #
@@ -226,14 +243,18 @@ for i in HSTa:
                 if (Fox>=Fmax) and (Nr[qi]-No)>1.0:
                     strn+=1
                     flx=1
-                    sn="jmp"+str(jmp)+"gen"+str(tk)+"strn"+str(strn)
+                    sn="jmp"+str(jmp)+"gen"+str(int(tk))+"strn"+str(strn)
+                    tree[qi]=sn
+                    gtree="newkerneltest/Three.p"
+                    pickle.dump(tree,open(gtree,"wb"))
                     Gnew[sn]=Gnx
                     Fnew[sn]=Fox
                     Nnew[sn]=No
                     Nr[qi]=Nr[qi]-No
 
         if(sxa==0):
-            print("EXTINCTION")
+            qx='EXTINCTION!!!!!'
+            print qx
             break
 
         if flx==1:
@@ -272,6 +293,8 @@ for i in HSTa:
         if tk>Ngen:# or DNt<0.01:
             qx='TRUE'
         ###############
+    if qx=='EXTINCTION!!!!!':
+        break
     #sreacts="datakerneltest/Rhistory"+str(jmp)+".p"
     spops="newkerneltest/PopsJMP"+str(jmp)+".p"
     spops2="newkerneltest/NtJMP"+str(jmp)+".p"
@@ -290,4 +313,6 @@ for i in HSTa:
     jmp+=1
     print jmp
     ############################
+gtree="newkerneltest/Three.p"
+pickle.dump(tree,open(gtree,"wb"))
 print ("COMPLETED")
