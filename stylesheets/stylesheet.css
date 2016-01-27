@@ -118,7 +118,7 @@ a {
   margin-top: 2rem;
   margin-bottom: 1rem;
   font-weight: normal;
-  color: rgba(15, 188, 165,1); }
+  color: rgba(15, 188, 165,1);}
 .main-content p {
   margin-bottom: 1em; }
 .main-content code {
@@ -224,7 +224,26 @@ a {
 @media screen and (max-width: 42em) {
   .main-content {
     padding: 2rem 1rem;
-    font-size: 1rem; } }
+    font-size: 1rem; }
+}
+
+@media screen and (max-width: 73em){
+  .nav{
+      height:auto !important;
+     width: 100%;
+     background: white;
+     padding: 8px;
+     -webkit-box-shadow: 0px 10px 8px 0px rgba(0,0,0,0.35);
+-moz-box-shadow: 0px 10px 8px 0px rgba(0,0,0,0.35);
+box-shadow: 0px 10px 8px 0px rgba(0,0,0,0.35) ;
+  }
+  .nav .btn2{
+     width: 50% !important;
+     display: inline-block;
+     float: left;
+     margin: 0;
+  }
+}
 
 .site-footer {
   padding-top: 2rem;
@@ -276,6 +295,15 @@ a {
   background-color: rgba(31, 183, 162, 0.5);
 }
 
+.stuck {
+ position:fixed !important;
+ top:0;
+}
+
+.sticky-wrapper {
+display: inline;
+}
+
 @media screen and (min-width: 64em) {
   .btn2 {
     padding: 0.75rem 1rem; } }
@@ -291,7 +319,4 @@ a {
     width: 100%;
     padding: 0.75rem;
     font-size: 0.9rem; }
-    .btn2 + .btn2 {
-      margin-top: 1rem;
-      margin-left: 0.5rem;
-      margin-right: 0.5rem;} }
+}
