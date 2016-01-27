@@ -5,15 +5,9 @@ def transform(nxtr,gen,rk,tepar,effpar):
     ri=nxtr[1]
 
     zn=gen[gi][0]
-    #print gi, gen[gi], ri, zn
     gx={}
-    #for u in gen.keys():
-    #    gx[u]=gen[u]
 
     if zn=='eff':
-        #print("EFF!")
-        #print ri
-        #raw_input()
         if ri==0:
             ki=0
             for u in gen.keys():
@@ -22,7 +16,6 @@ def transform(nxtr,gen,rk,tepar,effpar):
                 rn.append(zk)
               gx[ki]=rn # [gen[u][0],gen[u][1]]
               ki+=1
-            #print("create effector")
             nu=[]
             nu.append('eff')
             l=math.floor((effpar[1]-effpar[0])*rk.uniform()+effpar[0])
@@ -30,11 +23,8 @@ def transform(nxtr,gen,rk,tepar,effpar):
             nu.append(rk.uniform_pos())
             ng=len(gx.keys())
             gx[ng]=nu
-            #break
-
 
         if ri==1:
-            #print("Length Recomb")
             ki=0
             for u in gen.keys():
               if u != gi:
@@ -58,14 +48,8 @@ def transform(nxtr,gen,rk,tepar,effpar):
                 if ds<0.0:
                   ds=0.0
               gx[ng]=[gen[gi][0],l,ds]
-            #l=gen[gi][1]+math.floor(((effpar[1]-effpar[0])*rk.uniform()/3.0)+effpar[0])
-            #a=gen[gi][1]+math.floor((effpar[1]-effpar[0])*rk.uniform()+effpar[0])
-            #ng=len(gx.keys())
-            #  gx[ng]=[gen[gi][0],l]
-            #break
 
         if ri==2:
-            #print("Repeat")
             ki=0
             for u in gen.keys():
                 rn=[]
@@ -75,10 +59,8 @@ def transform(nxtr,gen,rk,tepar,effpar):
                 ki+=1
             ng=len(gx.keys())
             gx[ng]=[gen[gi][0],gen[gi][1],gen[gi][2]]
-            #break
 
         if ri==3:
-            #print("Bye")
             ki=0
             for i in gen.keys():
                 if i != gi:
@@ -96,7 +78,6 @@ def transform(nxtr,gen,rk,tepar,effpar):
             ng=len(gx.keys())
             gx[ng]=nu
 
-            #break
         if ri==4:
           ki=0
           for i in gen.keys():
@@ -107,11 +88,8 @@ def transform(nxtr,gen,rk,tepar,effpar):
                 gx[ki]=rn
                 ki+=1
 
-
-
     if zn=='te':
         if ri==0:
-            #print ("create te")
           ki=0
           for i in gen.keys():
             rn=[]
@@ -126,7 +104,6 @@ def transform(nxtr,gen,rk,tepar,effpar):
           nu.append(l)
           ng=len(gx.keys())
           gx[ng]=nu
-            #break
 
         if ri==1:
           ki=0
@@ -136,7 +113,6 @@ def transform(nxtr,gen,rk,tepar,effpar):
               rn.append(zk)
             gx[ki]=rn #[gen[u][0],gen[u][1]]
             ki+=1
-          #print("Repeat")
           ng=len(gx.keys())
           gx[ng]=[gen[gi][0],gen[gi][1]]
 
@@ -146,10 +122,5 @@ def transform(nxtr,gen,rk,tepar,effpar):
             if i!=gi:
                 gx[ki]=gen[i]
                 ki+=1
-            #break
-            #print("bye")
 
     return gx
-    #if gen[gi][0]
-
-##########################################

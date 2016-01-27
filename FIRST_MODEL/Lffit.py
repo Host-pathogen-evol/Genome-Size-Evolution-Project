@@ -1,3 +1,4 @@
+import math
 ##################################################################
 def splitgen(gen):
   effls=[]
@@ -10,7 +11,6 @@ def splitgen(gen):
   return [effls, tels]
 ##################################################################
 def loaddata(name):
-
     fin=open(name,"r")
     line=fin.readline()
     data=[]
@@ -20,12 +20,7 @@ def loaddata(name):
     return data
 ###################################################################
 def inigenome(ne,nte,rk,tepar,effpar):
-    import math
-    #print ne, nte
-    #print tepar
-    #print effpar
     gen={}
-
     for i in range(ne):
         l=math.floor((effpar[1]-effpar[0])*rk.uniform()+effpar[0])
         sn=rk.uniform_pos()
@@ -33,14 +28,9 @@ def inigenome(ne,nte,rk,tepar,effpar):
     for i in range(nte):
         l=math.floor( (tepar[1]-tepar[0])*rk.uniform()+tepar[0] )
         gen[ne+i]=['te',l]
-
     return gen
 ####################################################################
 def trates(Gen,MU): #MU=[Np,m1,m2,m3,m4,m5,m6,m7,m8?,Lth,beta1,beta2]
-    import math
-    #print("HOLA")
-
-
     TPR={}
     Np=MU[0]
     m1=MU[1] #hgt effs
@@ -55,9 +45,6 @@ def trates(Gen,MU): #MU=[Np,m1,m2,m3,m4,m5,m6,m7,m8?,Lth,beta1,beta2]
     b1=MU[10]
     b2=MU[11]
     Wo=MU[12]
-    #print len(MU)
-    #print MU
-    #print("#################")
 
     L=0.0
     neff=0.0
@@ -66,29 +53,23 @@ def trates(Gen,MU): #MU=[Np,m1,m2,m3,m4,m5,m6,m7,m8?,Lth,beta1,beta2]
 
     for j in Gen.keys():
         L+=Gen[j][1]
-        #print Gen[j]
         if Gen[j][0]=='eff':
           neff+=1.0
           Wn+=Gen[j][2]
         if Gen[j][0]=='te':
           ntes+=1.0
-        #raw_input()
     if neff>0.0:
    	 Ws=1.0-((Wn/neff)/((Wn/neff)+(Wo)))
     else:
     	print("EFF=0-KILL")
-
 
     Nk=(1500.0-(neff+ntes))
     if Nk<0:
         Nk=0.0
 
     FL=1.0/( 1.0+ (2.0*L/Lth)**2 )
-    #print Ws
-    #raw_input()
 
     for j in Gen.keys():
-        #print j
         if Gen[j][0]=='eff':
             zn=[]
             #if L<Lth: #HGT
@@ -159,18 +140,14 @@ def trates(Gen,MU): #MU=[Np,m1,m2,m3,m4,m5,m6,m7,m8?,Lth,beta1,beta2]
             zn.append(t3)
             TPR[j]=zn
 
-    #print("adios")
     return TPR
 ##############################
 def montec(rates, rk):
     sn=0.0
     for i in rates.keys():
-        #print rates[i]
         a=sum(rates[i])
-        #print a
         sn=sn+a
 
-    #print sn
     nxtr=[]
     END=''
     if sn>0.0:
@@ -178,19 +155,15 @@ def montec(rates, rk):
       mu=a*sn
       sx=0.0
       fl=0
-      #nxtr=[]
 
       for i in rates.keys():
         rn=0
         for k in rates[i]:
             sx+=k
-            #print mu, sx,  rn
             if sx>=mu:
                 fl=1
                 nxtr.append(i)
                 nxtr.append(rn)
-                #nxtr.append()
-                #print("done!")
                 break
             rn+=1
         if fl==1:
@@ -198,7 +171,6 @@ def montec(rates, rk):
     else:
       END='TRUE'
 
-    #print nxtr
     return [nxtr,END]
 ##########################################
 def transform(nxtr,gen,rk,tepar,effpar):
@@ -207,15 +179,9 @@ def transform(nxtr,gen,rk,tepar,effpar):
     ri=nxtr[1]
 
     zn=gen[gi][0]
-    #print gi, gen[gi], ri, zn
     gx={}
-    #for u in gen.keys():
-    #    gx[u]=gen[u]
 
     if zn=='eff':
-        #print("EFF!")
-        #print ri
-        #raw_input()
         if ri==0:
             ki=0
             for u in gen.keys():
@@ -224,7 +190,6 @@ def transform(nxtr,gen,rk,tepar,effpar):
                 rn.append(zk)
               gx[ki]=rn # [gen[u][0],gen[u][1]]
               ki+=1
-            #print("create effector")
             nu=[]
             nu.append('eff')
             l=math.floor((effpar[1]-effpar[0])*rk.uniform()+effpar[0])
@@ -232,11 +197,8 @@ def transform(nxtr,gen,rk,tepar,effpar):
             nu.append(rk.uniform_pos())
             ng=len(gx.keys())
             gx[ng]=nu
-            #break
-
 
         if ri==1:
-            #print("Length Recomb")
             ki=0
             for u in gen.keys():
               if u != gi:
@@ -251,16 +213,9 @@ def transform(nxtr,gen,rk,tepar,effpar):
               if l>=0.0:
                 gx[ng]=['te',l]
             else:
-              #coin=rk.uniform()
               gx[ng]=[gen[gi][0],l,(0.01+gen[gi][2])]
-            #l=gen[gi][1]+math.floor(((effpar[1]-effpar[0])*rk.uniform()/3.0)+effpar[0])
-            #a=gen[gi][1]+math.floor((effpar[1]-effpar[0])*rk.uniform()+effpar[0])
-            #ng=len(gx.keys())
-            #  gx[ng]=[gen[gi][0],l]
-            #break
 
         if ri==2:
-            #print("Repeat")
             ki=0
             for u in gen.keys():
                 rn=[]
@@ -270,10 +225,8 @@ def transform(nxtr,gen,rk,tepar,effpar):
                 ki+=1
             ng=len(gx.keys())
             gx[ng]=[gen[gi][0],gen[gi][1],gen[gi][2]]
-            #break
 
         if ri==3:
-            #print("Bye")
             ki=0
             for i in gen.keys():
                 if i != gi:
@@ -285,7 +238,6 @@ def transform(nxtr,gen,rk,tepar,effpar):
                     gx[ki]=['te',gen[gi][1]]
                 ki+=1
 
-            #break
         if ri==4:
           ki=0
           for i in gen.keys():
@@ -296,11 +248,8 @@ def transform(nxtr,gen,rk,tepar,effpar):
                 gx[ki]=rn
                 ki+=1
 
-
-
     if zn=='te':
         if ri==0:
-            #print ("create te")
           ki=0
           for i in gen.keys():
             rn=[]
@@ -315,7 +264,6 @@ def transform(nxtr,gen,rk,tepar,effpar):
           nu.append(l)
           ng=len(gx.keys())
           gx[ng]=nu
-            #break
 
         if ri==1:
           ki=0
@@ -325,7 +273,6 @@ def transform(nxtr,gen,rk,tepar,effpar):
               rn.append(zk)
             gx[ki]=rn #[gen[u][0],gen[u][1]]
             ki+=1
-          #print("Repeat")
           ng=len(gx.keys())
           gx[ng]=[gen[gi][0],gen[gi][1]]
 
@@ -335,11 +282,8 @@ def transform(nxtr,gen,rk,tepar,effpar):
             if i!=gi:
                 gx[ki]=gen[i]
                 ki+=1
-            #break
-            #print("bye")
 
     return gx
-    #if gen[gi][0]
 
 ##########################################
 def lent(gen):
@@ -361,19 +305,7 @@ def ft(gen):
       ft=ft/ne
 
     return ft
-############################################
-############################################
-############################################
-############################################
-############################################
-############################################
-############################################
-############################################
-############################################
-############################################
-############################################
-############################################
-############################################
+
 ############################################
 def Fig1(rxclr,crinckler,pth):
 
@@ -384,8 +316,6 @@ def Fig1(rxclr,crinckler,pth):
 
   rxclrmin=min(rxclr)
   rxclrmax=2500 #max(rxclr)
-  #print rxclrmin
-  #print rxclrmax
 
   i=rxclrmin
   sn=[]
@@ -412,8 +342,6 @@ def Fig1(rxclr,crinckler,pth):
 ###########################################
   cklermin=min(crinckler)
   cklermax=3200 #max(crinckler)
-  #print cklermin
-  #print cklermax
 
   i=cklermin
   snx=[]
@@ -438,16 +366,12 @@ def Fig1(rxclr,crinckler,pth):
   ax_inset.xaxis.set_tick_params(labelsize=15)
   ax_inset.yaxis.set_tick_params(labelsize=15)
   ax_inset.yaxis.set_major_formatter(mtick.FormatStrFormatter('%.1e'))
-#setp(a, xticks=[], yticks=[])
 ###########################################
   fig.set_size_inches(13.5,10.5)
   fig.patch.set_alpha(0.5)
   namepth=pth+'/Fig1.svg'
   fig.savefig(namepth,dpi=100, bbox_inches='tight')
   pickle.dump([xsnx,psx,xsn,ps],open(pth+"/F1data.p","wb"))
-###########################################
-###########################################
-###########################################
 ###########################################
 def Fig2(tes,pth):
   import numpy as np
@@ -457,8 +381,6 @@ def Fig2(tes,pth):
 
   tesmin=min(tes)
   tesmax=max(tes)
-#print rxclrmin
-#print rxclrmax
   i=tesmin
   sn=[]
   while(i<tesmax+10):
@@ -471,13 +393,10 @@ def Fig2(tes,pth):
   ps=[]
   for i in ysn:
     ps.append(float(i)/normsum)
-#print ps
 #############################################
   clade=[65,95,220,230,240,280]
   pcoding=[14451,16988,19622,20545,18155,19634]
-#plt.style.use('ggplot')
   fig, axes2 = plt.subplots(1,1,figsize=(10, 8))
-#axes2 = axes.ravel()
   leg=['P. ramorum','P. sojae','P. phaseoli Race F18','P. ipomoeae PIC79916','P. infestans','P. mirabilis PIC99114']
   font = {'family' : 'serif',
         'color'  : 'darkred',

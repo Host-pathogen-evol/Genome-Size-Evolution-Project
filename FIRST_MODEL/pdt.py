@@ -6,13 +6,8 @@ import matplotlib.ticker as mtick
 
 def datadisplay(lth,ltn,ngt,efflens,telens,dbina,dbinb,P,SEED,pth,wfitn,Qi):
 
-  #plt.use('Agg')
-##########################################
   rxclrmin=min(telens)
   rxclrmax=max(telens)
-  #if not rxclrmin:
-  #print rxclrmax
-
 
   i=rxclrmin
   sna=[]
@@ -28,13 +23,9 @@ def datadisplay(lth,ltn,ngt,efflens,telens,dbina,dbinb,P,SEED,pth,wfitn,Qi):
   psa=[]
   for i in ysna:
       psa.append(float(i)/nsuma)
-  #print ps
 ############################################
   rxclrmin=min(efflens)
   rxclrmax=max(efflens)
-  #print rxclrmin
-  #print rxclrmax
-  #print(efflens)
 
   i=rxclrmin
   sn=[]
@@ -50,7 +41,6 @@ def datadisplay(lth,ltn,ngt,efflens,telens,dbina,dbinb,P,SEED,pth,wfitn,Qi):
   ps=[]
   for i in ysn:
     ps.append(float(i)/normsum)
-
 ############################################
   fig, axes2 = plt.subplots(2,2,figsize=(100, 8))
 
@@ -62,12 +52,6 @@ def datadisplay(lth,ltn,ngt,efflens,telens,dbina,dbinb,P,SEED,pth,wfitn,Qi):
 
   axes2[0][1].plot(ngt,"b*-")
 
-
-  #fig, axes3 = plt.subplots(1,1,figsize=(10, 8))
-  #axes3.plot(ngt,"r-")
-  #axes2[1][0] = plt.subplots(1, 1, figsize=(20, 8))
-
-
   axes2[1][0].plot(xsna, psa,"r--o")
   axes2[1][0].set_title('TEs pdf '+str(len(telens)), fontsize=10)
   axes2[1][0].set_ylabel("$P(l_i=n)$",fontsize=10)
@@ -75,10 +59,6 @@ def datadisplay(lth,ltn,ngt,efflens,telens,dbina,dbinb,P,SEED,pth,wfitn,Qi):
   axes2[1][0].xaxis.set_tick_params(labelsize=10)
   axes2[1][0].yaxis.set_tick_params(labelsize=10)
   axes2[1][0].yaxis.set_major_formatter(mtick.FormatStrFormatter('%.1e'))
-
-
-#fig, axes=plt.subplots(1, 1, figsize=(20, 8))
-#axes.hist(rxclr, histtype="stepfilled",bins=250, alpha=0.8, normed=True)
 #################################################################
   axes2[1][1].plot(xsn, ps,"r--o")
 
@@ -90,12 +70,9 @@ def datadisplay(lth,ltn,ngt,efflens,telens,dbina,dbinb,P,SEED,pth,wfitn,Qi):
   axes2[1][1].yaxis.set_major_formatter(mtick.FormatStrFormatter('%.1e'))
 ####################################################################
   ttl=''
-  #for i in P:
   ttl+='c='+str(Qi)
-  #print ttl
 
   fig.suptitle(ttl, fontsize=30)
-
 
   nj=1
   import os
@@ -105,20 +82,15 @@ def datadisplay(lth,ltn,ngt,efflens,telens,dbina,dbinb,P,SEED,pth,wfitn,Qi):
     namefig=pth+'/pts'+str(nj)+'plot.svg'
   print namefig
 
-  #namepth=pth+'plots.svg'
-
-
   fig.set_size_inches(13.5,10.5)
   fig.patch.set_alpha(0.5)
   fig.savefig(namefig,dpi=100, bbox_inches='tight')
   plt.close(fig)
 ##########################################################################
-'''*********modify next line to save DT, number of jumps as well as the other parameters
-just adding them at the end of the things the fun needs and at the and of the Data list
-'''
-def savedata(lth,ltn,ngt,efflens,telens, P,SEED,pth,wfitn,trns,nefft,ntest,lneff,lntest, DT, JUMPS): ###*
 
-  Data=[lth,ltn,ngt,nefft,ntest,efflens,telens, P,SEED,trns,lneff,lntest,DT,JUMPS] ###*
+def savedata(lth,ltn,ngt,efflens,telens, P,SEED,pth,wfitn,trns,nefft,ntest,lneff,lntest, DT, JUMPS):
+
+  Data=[lth,ltn,ngt,nefft,ntest,efflens,telens, P,SEED,trns,lneff,lntest,DT,JUMPS]
   Data2=[wfitn]
 
   nj=1
@@ -130,7 +102,6 @@ def savedata(lth,ltn,ngt,efflens,telens, P,SEED,pth,wfitn,trns,nefft,ntest,lneff
     namefig2=pth+'/pts'+str(nj)+'plotdata_2.p'
   print namefig
 
-  #**********add these lines
   aladd=pth.strip('./').split('/')
   aladd.append(str(nj))
   Data.append(aladd)
