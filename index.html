@@ -69,6 +69,10 @@ as well as a brief description of our results.</p>
 <p>Here each effector is characterized by a score (used to calculate the overall fitness) and a length.</p>
 <p>In this very simple model hosts are no explicitly considered, and a host jump simply results in random changes
 in the scores of the effectors in the pool.</p>
+<p>We run the simulation both with and without jumps (you can find here
+the code to perform the complete simulation with jumps, to skip this step just set the time gap between jumps
+to the time of your simulation and number of jumps to <code>1</code>). Please note that we talk about time as a measure of evolutionary events,
+not absolute time.</p>
 
 <h3>Discussion</h3>
 
@@ -78,9 +82,11 @@ in the scores of the effectors in the pool.</p>
 
 <p>To run a simulation of the first model you can download the codes <a href="https://github.com/Host-pathogen-evol/TSL-PROJECT-A/tree/master/FIRST_MODEL">here</a>.</p>
 <p>There are a lot of parameters you may want to change, you can have a full list of them by running</p>
-<code>python mprostest.py -h</code>
-<p>Plese note that you will need to previously install pygsl to run the simulation.</p>
+<code>$python mprostest.py -h</code>
+<p>Plese note that you will need to previously install <a href="http://sourceforge.net/projects/pygsl/">pygsl</a> to run the simulation.</p>
 <p>Also, we suggest to seed the random number generator with the <code>-s</code> or <code>--seed</code> option, as the program is using a default seed.</p>
+<p>It is advisable to set the path to a new folder not to overwrite previous results, and because the program could produce a large
+    amount of folders.</p>
 
 <hr color=rgba(0,0,0,0.5)/>
 
@@ -105,9 +111,36 @@ population is moved to the new host, and the new fitness is calculated.</p>
 
 <p>To run a simulation with the second model, download the codes <a href="https://github.com/Host-pathogen-evol/TSL-PROJECT-A/tree/master/SECOND_MODEL">here</a>.</p>
 <p>You can have a full list of options running</p>
-<code>python hpmodel2.py -h</code>
+<code>$python hpmodel2.py -h</code>
 <p>We suggest to seed the random number generator with the <code>-s</code> or <code>--seed</code> option, as the program is using a default seed.</p>
 <p>For more information you can also rely on the docstring in the main code.</p>
+<p>It is advisable to set the path to a new folder not to overwrite previous results, and because the program could produce several new files.</p>
+
+<hr color=rgba(0,0,0,0.5)/>
+
+<h3>Additional Scripts</h3>
+
+<p>In the repository you will also find some scripts we wrote to plot the results. You may want to use these scripts or to
+    write your own. To use the provided scripts you will need to download and install the <a href="http://matplotlib.org/users/installing.html">Matplotlib</a> library.<p>
+
+<h4><bold>First Model</bold></h4> <!--this section need to be fixed, add parameters to give the script and what plot you get from it-->
+
+<p>To plot the results of the simulation you will need to write in command line:
+    <code>$python clusterV.py</code>
+After getting the results (the script will save some plots AND some data files, that you will need for the next step), you can use the second script
+    <code>$python comparison_plot.py</code>
+You may also want to run the following script to get plots with the length distribution of effectors and TEs</p> <!--add code and check for dependencies-->
+
+<h4><bold>Second Model</bold></h4>
+
+<hr color=rgba(0,0,0,0.5)/>
+
+<h3>Follow Up</h3>
+
+<p>There's much more to be tested and implemented (this is a simple model, many features could be added in future).
+It would be interesting to have some experimental results, as hard as it is to infer evolutionary patterns.
+Another interesting thing still to be investigate would be the survival/evolution of a pathogen that, after some evolution time, jumps
+back to its original host.</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/Host-pathogen-evol/TSL-PROJECT-A">The Genome Size Evolution Project</a> is maintained by <a href="https://github.com/calugo">Carlos Lugo</a> and <a href="https://github.com/aliceminotto">Alice Minotto</a>.</span>
