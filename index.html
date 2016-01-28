@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <title>Genome Size Evolution Models by TSL</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content="genome size evolution models in host-pathogen systems"/>
+    <meta name="description" content="genome size evolution models in host-pathogen systems, increase in length and number of effector genes and transposable elements"/>
     <meta name"author" content="Alice Minotto"/>
     <meta property="og:title" content="Genome Size Evolution Models"/>
     <meta property="og:type" content="website"/>
+    <meta property="og:image" content:"https://github.com/Host-pathogen-evol/TSL-PROJECT-A/blob/gh-pages/images/6bakground_square.png?raw=true"/>
+    <meta property="og:description" content="Genome size evolution models in host-pathogen systems,
+    increase in length and number of effector genes and transposable elements. Two models
+    based on oomycetes and plant interactions studies show increase in size and host jump response"/>
+    <meta name="twitter:description" content="Genome size evolution models in host-pathogen systems,
+    increase in length and number of effector genes and transposable elements. Two models
+    based on oomycetes and plant interactions studies">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
@@ -32,8 +39,9 @@
 
 <p>!!!!This page is currently under construction!!!!</p>
 
-<p>This page contains the documentation for python and Ipython modules written for the
-host-pathogen model detailed in my <a href="http://calugo.github.io/blog/2014/10/14/genome-evolution-in-host-pathogen-systems/">site</a></p>
+<p>This page contains a simple presentations of the models and the documentation for python and Ipython modules written for the
+host-pathogen models detailed in <a href="http://calugo.github.io/blog/2014/10/14/genome-evolution-in-host-pathogen-systems/">Carlos Lugo's website</a>,
+as well as a brief description of our results.</p>
 
 <p>The project was born in <a href="http://www.tsl.ac.uk/groups/bioinformatics/">TSL Bioinformatics Group</a>, as a mean to model the evolution of plant pathogen’s genomes,
     in particoular oomycetes' as <em>Phytophthora infestans</em>.</p>
@@ -41,11 +49,26 @@ host-pathogen model detailed in my <a href="http://calugo.github.io/blog/2014/10
     One of the main interests was to investigate the effects of TEs on genome size, that is observed as increasing in oomycetes.
     The other purpose of the study was to model both the population dynamics and the genome changes after host jumps.</p>
 
+<p>Do not hesitate to <a href="mailto:kupkasmale@gmail.com?subject=genome%20size%20evolution%20project">contact me</a> if you feel you need any more help or informations, or if you want to discuss the project.</p>
 <p>Cheers!</p>
+
+<hr color=rgba(0,0,0,0.5)/>
 
 <a name="first_model"></a><h2><bold>First Model</bold></h2>
 
-<p>In the first model used for the simulations, we are considering effector genes and transplosable elements.</p>
+<p>In the first model used for the simulations, we are considering effector genes and transposable elements.</p>
+<p>We considered the following events that can happen during evolution:
+    <ul>
+        <li>gain of effector genes or TEs by horizontal gene transfer,</li>
+        <li>loss of effector genes or TEs,</li>
+        <li>duplication of effector genes or TEs,</li>
+        <li>mutation or recombination of effectors,</li>
+        <li>silencing of effectors due to TE insertion.</li>
+    </ul>
+</p>
+<p>Here each effector is characterized by a score (used to calculate the overall fitness) and a length.</p>
+<p>In this very simple model hosts are no explicitly considered, and a host jump simply results in random changes
+in the scores of the effectors in the pool.</p>
 
 <h3>Discussion</h3>
 
@@ -59,12 +82,20 @@ host-pathogen model detailed in my <a href="http://calugo.github.io/blog/2014/10
 <p>Plese note that you will need to previously install pygsl to run the simulation.</p>
 <p>Also, we suggest to seed the random number generator with the <code>-s</code> or <code>--seed</code> option, as the program is using a default seed.</p>
 
+<hr color=rgba(0,0,0,0.5)/>
+
 <a name="second_model"></a><h2><bold>Second Model</bold></h2>
 
 <p>In the second model we decided not to explicitly consider transposable elements anymore, as their evolution pattern resulted quite clear from the
 first model, and there are no other known biological effects today to add in the model. In particoular it is not proved that they have an effect on the pathogen fitness,
-other than contributing to silencing or general genome plasticity, both of which can be implicitly considered modifying accordingly 
-the rates of mutation/recombination, silencing, hgt and duplication.</p> <!--description of waht is considered in the first model-->
+other than contributing to silencing or general genome plasticity, both of which can be implicitly considered modifying accordingly
+the rates of mutation/recombination, silencing, hgt and duplication.</p>
+<p>In this model effectors are characterized by a length and a list of target genes, each one with a score.</p>
+<p>Moreover the host is characterized by a fixed list of target.</p>
+<p>The fitness is so calculated considering the score of the effectors towards targets that are actually present in the host.</p>
+<p>A host jump is now performed by creating a new host, with a different random list of targets. A sample of the pathogen
+population is moved to the new host, and the new fitness is calculated.</p>
+<p>Also, we keep track of the different strains and theur population dynamics in time.</p>
 
 <h3>Discussion</h3>
 
