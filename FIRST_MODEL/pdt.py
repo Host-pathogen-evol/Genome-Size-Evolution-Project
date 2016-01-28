@@ -106,5 +106,5 @@ def savedata(lth,ltn,ngt,efflens,telens, P,SEED,pth,wfitn,trns,nefft,ntest,lneff
   aladd.append(str(nj))
   Data.append(aladd)
 
-  pickle.dump(Data,open(namefig,"wb"))
-  pickle.dump(Data2,open(namefig2,wb),protocol=2)
+  pickle.dump(Data,open(namefig,"wb"), protocol=2)
+  pickle.dump(Data2,open(namefig2,"wb"),protocol=2)
