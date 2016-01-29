@@ -50,6 +50,7 @@ as well as a brief description of our results.</p>
     The other purpose of the study was to model both the population dynamics and the genome changes after host jumps.</p>
 
 <p>Do not hesitate to <a href="mailto:kupkasmale@gmail.com?subject=genome%20size%20evolution%20project">contact me</a> if you feel you need any more help or informations, or if you want to discuss the project.</p>
+
 <p>Cheers!</p>
 
 <hr color=rgba(0,0,0,0.5)/>
@@ -101,7 +102,7 @@ the rates of mutation/recombination, silencing, hgt and duplication.</p>
 <p>The fitness is so calculated considering the score of the effectors towards targets that are actually present in the host.</p>
 <p>A host jump is now performed by creating a new host, with a different random list of targets. A sample of the pathogen
 population is moved to the new host, and the new fitness is calculated.</p>
-<p>Also, we keep track of the different strains and theur population dynamics in time.</p>
+<p>Also, we keep track of the different strains and their population dynamics in time.</p>
 
 <h3>Discussion</h3>
 
@@ -127,11 +128,24 @@ population is moved to the new host, and the new fitness is calculated.</p>
 
 <p>To plot the results of the simulation you will need to write in command line:
     <code>$python clusterV.py</code>
-After getting the results (the script will save some plots AND some data files, that you will need for the next step), you can use the second script
+This script will plot:
+    <ul>
+        <li>length of the whole genome, effector genes and transposable elements over time for one run;</li>
+        <li>number of units in the genome, number of effectors and TEs over time in one run;</li>
+        <li>random walk, i.e. the relationship between number of Tes and number of effector genes;</li>
+        <li>average length of the whole genome, effector genes and transposable elements over time;</li>
+        <li>average number of units in the genome, number of effectors and TEs over time.</li>
+    </ul>
+After getting the results (the script will save some plots AND some data files, that you will need for the next step), you can use the second script</p>
     <code>$python comparison_plot.py</code>
-You may also want to run the following script to get plots with the length distribution of effectors and TEs</p> <!--add code and check for dependencies-->
+<p>Again, this will plot length and number of units over time, comparing the results if you run the simulation multiple
+times and you want to compare the results between different time gaps or different mutation rate.</p>
+<p>You may also want to run the following script to get plots with the length distribution of effectors and TEs</p>
+    <code>$python scatter_plot_jumps.py</code> <!--add code and check for dependencies-->
 
 <h4><bold>Second Model</bold></h4>
+
+<p>To plot the result of the simulation</p>
 
 <hr color=rgba(0,0,0,0.5)/>
 
