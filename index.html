@@ -37,7 +37,6 @@
       <h1>
 <a id="genome-length-evolution-in-host-pathogen-systems" class="anchor" href="#genome-length-evolution-in-host-pathogen-systems" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Genome Length Evolution in Host-Pathogen systems.</h1>
 <div id="intro">
-    <p>!!!!This page is currently under construction!!!!</p>
 
     <p>This page contains a simple presentations of the models and the documentation for python and Ipython modules written for the
     host-pathogen models detailed in <a href="http://calugo.github.io/blog/2014/10/14/genome-evolution-in-host-pathogen-systems/">Carlos Lugo's website</a>,
@@ -157,15 +156,17 @@
         <p><code>$python scatter_plot_jumps_tes.py [path 1st dir] [path 2nd dir] [path 3rd dir] [path 4th dir] [path 5th dir] [numer of runs]</code></p>
     <p>Again, it is assumed you run the simulation with the parameters of DT that we used, if not check the code. You do not need to run <code>clusterV.py</code>
         before these.</p>
-    <p>You can also plot the fitness of the pathogen:</p>
-    <p><code>$python fitness_first_model.py</code></p>
+    <p>You can also plot the average fitness of the pathogen (you can have a full list of options with <code>-h</code>) or the fitness in one simulation:</p>
+    <p><code>$python fitness_first_model.py [path] [number of runs] [number of jumps]</code></p>
+    <p><code>$python one_fitness.py [path] [number of runs] [number of jumps] -s [number of the run to plot]</code></p>
 
     <h4><bold>Second Model</bold></h4>
 
     <p>To plot the result of the simulation you may want to run the following code:</p>
-    <p><code>$python newmodfigs.py</code></p>
+    <p><code>$python newmodfigs.py [path] [number of runs] [number of jumps] [time gap between jumps]</code></p>
     <p>This script plots the interactome pattern, the population dynamics of the strains that evolved during the simulation, the promiscuity pattern and the evolution
     of a fitness parameter.</p>
+    <p>A Ipython notebook is also available in the same folder.</p>
 </div>
 <hr>
 <div id="followup">
