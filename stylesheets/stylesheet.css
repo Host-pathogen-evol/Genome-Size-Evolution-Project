@@ -339,5 +339,6 @@ display: inline;
 .image-c {
     clear:both;
     display:block;
-    width: 85%;
+    width: 95%;
+    text-align: center;
 }

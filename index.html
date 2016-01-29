@@ -88,12 +88,25 @@
                 <img src="https://github.com/Host-pathogen-evol/Genome-Size-Evolution-Project/blob/gh-pages/images/averagesn_nojumps.png?raw=true"/>
             </div>
         <p style="clear:both">We were able to observe this same pattern in all the simulations with different time gap between jumps.</p>
+        <div class="image-r">
+            <img src="https://github.com/Host-pathogen-evol/Genome-Size-Evolution-Project/blob/gh-pages/images/average_fitness_n4.png?raw=true"/>
+        </div>
         <p>We were also able to observe a decrease in the fitness parameter following a host jump, as expected. Then the pathogen seems
         to start recovering, but the DT we used in the simulations didn't probably allow a full recovery.</p>
-        <p style="clear:both">With regard to the length distribution of effector genes and TEs, first it is clear that the resulting pattern significantly
-        differ due to the initial state of the system. Anyway it can be noticed that the size of a single gene/TEs is decreasing in our
-        model (follow the rainbow colors in the plots), due to the fitness cost of having more bases. On the other side it has to be noted that
-        the majority of very short genes have no biological meaning.</p>
+        <p>With regard to the length distribution of effector genes and TEs, first it is clear that the resulting pattern significantly
+        differ due to the initial state of the system. The following two plots show the length distribution for transposable elements for the same
+        set of parameters.</p>
+        <div class="image-c">
+            <img src="https://github.com/Host-pathogen-evol/Genome-Size-Evolution-Project/blob/gh-pages/images/lendistribution_plot_te0.5_5000.png?raw=true"/>
+            <img src="https://github.com/Host-pathogen-evol/Genome-Size-Evolution-Project/blob/gh-pages/images/lendistribution_plot_te0.5_5000%202.png?raw=true"/>
+        </div>
+        <p style="clear:both">The following plots show the length distribution of effector genes for the same set of parameters (follow the rainbow to see changes in evolution).</p>
+        <div class="image-c">
+            <img src="https://github.com/Host-pathogen-evol/Genome-Size-Evolution-Project/blob/gh-pages/images/lendistribution_plot_eff0.5_5000.png?raw=true"/>
+            <img src="https://github.com/Host-pathogen-evol/Genome-Size-Evolution-Project/blob/gh-pages/images/lendistribution_plot_eff0.5_5000%202.png?raw=true"/>
+        </div>
+        <p style="clear:both">It can be noticed that the gene size is decreasing in our model, due to the fitness cost of having more bases. On the other side
+             we have to remember that the majority of very short genes have no biological meaning.</p>
     </div>
     <div class="use">
         <h3>Running simulations and getting your own results</h3>
@@ -120,7 +133,7 @@
         <p>Moreover the host is characterized by a fixed list of target.</p>
         <p>The fitness is so calculated considering the score of the effectors towards targets that are actually present in the host.</p>
         <div class="image-c">
-            <img src=""
+            <img src="https://github.com/Host-pathogen-evol/Genome-Size-Evolution-Project/blob/gh-pages/images/interactions.png?raw=true"/>
         </div>
         <p style="clar:both">A host jump is now performed by creating a new host, with a different random list of targets. A sample of the pathogen
         population is moved to the new host, and the new fitness is calculated.</p>
@@ -130,8 +143,14 @@
         <h3>Discussion</h3>
 
         <p>Here is a very short overview of the results of our simulations, as well as some plot we generated to display the results.</p>
-        <p>You can notice how at the beginning of the simulation, with low gene count, a host jump has an important negative effect on the fitness,
+        <div class="image-c">
+            <img src="https://github.com/Host-pathogen-evol/Genome-Size-Evolution-Project/blob/gh-pages/images/0rratestyp.png?raw=true">
+        </div>
+        <p style="claer: both">You can notice how at the beginning of the simulation, with low gene count, a host jump has an important negative effect on the fitness,
         while at the end of the simulation the decrease is not so big, probably because of the bigger effector gene pool present in the host.</p>
+        <div class="image-c">
+            <img src=""/>
+        </div>
     </div>
     <div class="use">
         <h3>Running simulations and getting your own results</h3>
