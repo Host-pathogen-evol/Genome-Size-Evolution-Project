@@ -1,4 +1,5 @@
 #!usr/bin/python
+
 import matplotlib
 import numpy as np
 import matplotlib.pyplot as plt
@@ -13,7 +14,9 @@ parser.add_argument("p",help="path to the right directory")
 parser.add_argument("r", type=int, help="number of runs")
 parser.add_argument("j", type=int, help="number of jumps")
 parser.add_argument("-n","--nojumps", type=bool, default=False, help="set to True if run with only c=0.1 / default False")
+parser.add_argument("-s","--singlerun",type=int, default=0, help="single run to plot / default 0")
 args=parser.parse_args()
+
 pth=args.p
 print pth
 xi=args.j+1 #jumps
@@ -21,44 +24,27 @@ if args.nojumps==False:
     nX=['n0/','n1/','n2/','n3/','n4/','n5/','n6/','n7/','n8/'] #Parameters C
 else:
     nX=['n0/']
-rnX=[]
-for mu in range(args.r):
-    if all(os.listdir(pth+'RUN'+str(mu)+'/'+x)==[] for x in nX):
-        pass
-    else:
-        rnX.append('RUN'+str(mu)+'/')                          #RUNS R0,R1,...,
-trials=0
-average=[]
+
+rj='RUN'+str(args.singlerun)+'/'
 for c_value in nX: #n0, n1, etc
     plot_this=[]
     print "processing c value", c_value
     for ji in xrange(1,xi): #number of jumps
+        fitness_values=[]
         print "jump",ji
-        for rj in rnX: #R0, R1, R2, ...
-            print "run", rj
+        try:
             fin=pth+rj+c_value+'pts'+str(ji)+'plotdata.p_2'
-            try:
-                f=open(fin,"rb")
-                A=pickle.load(f)
-                f.close()
-                if len(average)==0:
-                    average=[0]*len(A[0])
-                fitness_values=A[0]
-                trials+=1.0
-                for val in xrange(len(fitness_values)):
-                    average[val]+=fitness_values[val]
-            except IOError:
-                print "IEOerror",fin
-                pass
-
-        average=[(1-x/trials) for x in average]
-        plot_this+=average
+            f=open(fin,"rb")
+            A=pickle.load(f)
+            f.close()
+            fitness_values+=A[0]
+        except IOError:
+            continue
+        plot_this+=[(1-x) for x in fitness_values]
         print len(plot_this)
-        average=[]
-        trials=0
     print "plotting"
     fig1, axesa = plt.subplots(1,figsize=(10, 8))
-    axesa.set_ylabel("$<U>_g(t)$", fontsize=40)
+    axesa.set_ylabel("$U_g(t)$", fontsize=40)
     axesa.set_xlabel("$Time$ $(Evolutionary$ $events)$",fontsize=40)
     axesa.xaxis.set_tick_params(labelsize=20)
     axesa.xaxis.set_major_formatter(mtick.ScalarFormatter(useMathText=True))
@@ -67,20 +53,13 @@ for c_value in nX: #n0, n1, etc
     axesa.yaxis.set_major_formatter(mtick.ScalarFormatter(useMathText=True))
     plt.ticklabel_format(style='sci', scilimits=(0,0))
 
-    axesa.plot(range(len(plot_this)),plot_this,color='black')
+    plt.plot(range(len(plot_this)),plot_this,color='black')
+    #plt.title('$Fitness$',fontsize=50)
+    #print plot_this
+    #print len(plot_this)
+    #plt.xlim([0,len(average)])
+    #plt.ylim([min(average)-100,max(average)+100])
 
-#    if c_value=='n0/':
-#        ax_inset=fig1.add_axes([0.5,0.55,0.3,0.3])
-#    elif c_value=="n1/":
-#        ax_inset=fig1.add_axes([0.2,0.55,0.3,0.3])
-#    else:
-#        ax_inset=fig1.add_axes([0.5,0.17,0.3,0.3])
-#    ax_inset.xaxis.set_major_formatter(mtick.ScalarFormatter(useMathText=True))
-#    plt.ticklabel_format(style='sci', scilimits=(0,0))
-#    ax_inset.yaxis.set_major_formatter(mtick.ScalarFormatter(useMathText=True))
-#    plt.ticklabel_format(style='sci', scilimits=(0,0))
-#    ax_inset.plot(range(100000,101000),plot_this[100000:101000],"k")
-
-    namepth=pth+"average_fitness_"+str(c_value)[:-1]
+    namepth=pth+"one_fitness_"+str(c_value)[:-1]+"run_"+str(args.singlerun)
     fig1.patch.set_alpha(0.5)
     fig1.savefig(namepth+'.png', dpi=100, bbox_inches='tight')
