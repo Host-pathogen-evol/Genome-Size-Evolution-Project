@@ -325,3 +325,14 @@ display: inline;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)) !important;
     height: 1px;
 }
+
+.image-l {
+    float:left;
+    display: inline-block;
+    width: 48%;
+}
+.image-r {
+    float:right;
+    display: inline-block;;
+    width: 48%;
+}
