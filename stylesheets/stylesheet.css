@@ -206,7 +206,7 @@ a {
   height: 2px;
   padding: 0;
   margin: 1rem 0;
-  background-color: #eff0f1;
+  background-color: #d7d8d8;
   border: 0; }
 
 @media screen and (min-width: 64em) {
@@ -319,4 +319,9 @@ display: inline;
     width: 100%;
     padding: 0.75rem;
     font-size: 0.9rem; }
+}
+
+.site-footer hr {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)) !important;
+    height: 1px;
 }
