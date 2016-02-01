@@ -32,7 +32,7 @@ def tremove(pathogen,eff):
 
     return new_pathogen
 
-def mutation(pathogen,eff,K,mu1,mu2):
+def mutation(pathogen,eff,K,mu1,mu2,nto):
     new_pathogen=deepcopy(pathogen)
     for target in new_pathogen[eff]:
         y=rk.randn()
@@ -40,7 +40,7 @@ def mutation(pathogen,eff,K,mu1,mu2):
         if new_pathogen[eff][target]<0.0:
             new_pathogen[eff][target]=0.0
     ranx=rk.random()
-    if ranx<mu1:
+    if ranx<mu1 and len(new_pathogen[eff].keys())<nto:
         new_pathogen=tgain(new_pathogen,eff,K)
     elif ranx>=mu2:
         new_pathogen=tremove(new_pathogen,eff)
@@ -99,7 +99,7 @@ def transform(pathogen,appening,K,mu1,mu2,nto):
         if event==4:
             pass
         elif event==0:
-            pathogen=mutation(pathogen,effector,K,mu1,mu2)
+            pathogen=mutation(pathogen,effector,K,mu1,mu2,nto)
         elif event==1:
             pathogen=duplication(pathogen,effector)
         elif event==2:
