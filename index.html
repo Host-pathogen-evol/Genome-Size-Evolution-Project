@@ -38,7 +38,7 @@
 <a id="genome-length-evolution-in-host-pathogen-systems" class="anchor" href="#genome-length-evolution-in-host-pathogen-systems" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Genome Length Evolution in Host-Pathogen systems</h1>
 <div id="intro">
 
-    <p>This page contains a simple presentations of the models and the documentation for python and Ipython modules written for the
+    <p>This page contains a simple presentation of the models and the documentation for python and Ipython modules written for the
     host-pathogen models detailed in <a href="http://calugo.github.io/blog/2014/10/14/genome-evolution-in-host-pathogen-systems/">Carlos Lugo's website</a>,
     as well as an extremely brief description of our results, that will be presented in a more detailed fashion, explaining the effect of different parameters, in some other place.</p>
 
@@ -71,7 +71,7 @@
             <img src="https://github.com/Host-pathogen-evol/Genome-Size-Evolution-Project/blob/gh-pages/images/transformsnew2.png?raw=true"/>
         </div>
         <p>Here each effector is characterized by a score (used to calculate the overall fitness) and a length.</p>
-        <p>In this very simple model hosts are no explicitly considered, and a host jump simply results in random changes
+        <p>In this very simple model hosts are not explicitly considered, and a host jump simply results in random changes
         in the scores of the effectors in the pool.</p>
         <p>We run the simulation both with and without jumps (you can find here
         the code to perform the complete simulation with jumps, to skip this step just set the time gap between jumps
@@ -81,7 +81,7 @@
     <div class="discussion">
         <h3>Discussion</h3>
 
-        <p>Here is a very short overview of the results of our simulations, as well as some plot we generated to display the results.</p>
+        <p>Here is a very short overview of the results of our simulations, as well as some plots we generated to display the results.</p>
         <p>The following plots are the results of a simulation with no jumps, we can see an increase both in length and number of units, before
              reaching a plateau.</p>
             <div class="image-l">
@@ -96,7 +96,7 @@
         </div>
         <p>We were also able to observe a decrease in the fitness parameter following a host jump, as expected. Then the pathogen seems
         to start recovering, but the DT we used in the simulations didn't probably allow a full recovery.</p>
-        <p>With regard to the length distribution of effector genes and TEs, first it is clear that the resulting pattern significantly
+        <p>With regard to the length distribution of effector genes and TEs, it is clear that the resulting patterns significantly
         differ due to the initial state of the system. The following two plots show the length distribution for transposable elements for the same
         set of parameters.</p>
         <div class="image-c">
@@ -117,7 +117,7 @@
         <p>To run a simulation of the first model you can download the codes <a href="https://github.com/Host-pathogen-evol/TSL-PROJECT-A/tree/master/FIRST_MODEL">here</a>.</p>
         <p>There are a lot of parameters you may want to change, you can have a full list of them by running</p>
         <code>$python mprostest.py -h</code>
-        <p>Please note that you will need to previously install <a href="http://www.scipy.org/scipylib/download.html">numpy</a> and <a href="http://sourceforge.net/projects/pygsl/">pygsl</a> to run the simulation.</p>
+        <p>Please note that you will need to previously install <a href="http://www.scipy.org/scipylib/download.html">NumPy</a> and <a href="http://sourceforge.net/projects/pygsl/">pygsl</a> to run the simulation.</p>
         <p>Also, we suggest to seed the random number generator with the <code>-s</code> or <code>--seed</code> option, as the program is using a default seed.</p>
         <p>It is advisable to set the path to a new folder not to overwrite previous results, and because the program could produce a large
             amount of folders.</p>
@@ -133,24 +133,24 @@
         other than contributing to silencing or general genome plasticity, both of which can be implicitly considered modifying accordingly
         the rates of mutation/recombination, silencing, hgt and duplication.</p>
         <p>In this model effectors are characterized by a length and a list of target genes, each one with a score.</p>
-        <p>Moreover the host is characterized by a fixed list of target.</p>
+        <p>Moreover the host is characterized by a fixed list of targets.</p>
         <p>The fitness is so calculated considering the score of the effectors towards targets that are actually present in the host.</p>
         <div class="image-c">
             <img src="https://github.com/Host-pathogen-evol/Genome-Size-Evolution-Project/blob/gh-pages/images/interactions.png?raw=true"/>
         </div>
         <p style="clar:both">A host jump is now performed by creating a new host, with a different random list of targets. A sample of the pathogen
         population is moved to the new host, and the new fitness is calculated.</p>
-        <p>Also, we keep track of the different strains and their population dynamics in time.</p>
+        <p>Also, we keep track of the different strains and their population dynamics over time.</p>
     </div>
     <div class="discussion">
         <h3>Discussion</h3>
 
-        <p>Here is a very short overview of the results of our simulations, as well as some plot we generated to display the results.</p>
+        <p>Here is a very short overview of the results of our simulations, as well as some plots we generated to display the results.</p>
         <div class="image-c">
             <img src="https://github.com/Host-pathogen-evol/Genome-Size-Evolution-Project/blob/gh-pages/images/0rratestyp.png?raw=true">
         </div>
         <p style="claer: both">You can notice how at the beginning of the simulation, with low gene count, a host jump has an important negative effect on the fitness,
-        while at the end of the simulation the decrease is not so big, probably because of the bigger effector gene pool present in the host.</p>
+        while at the end of the simulation the decrease is not so big, probably because of the bigger effector gene pool present in the pathogen.</p>
         <div class="image-c">
             <img src="https://github.com/Host-pathogen-evol/Genome-Size-Evolution-Project/blob/gh-pages/images/0typevol.png?raw=true"/>
         </div>
@@ -160,7 +160,7 @@
         <h3>Running simulations and getting your own results</h3>
 
         <p>To run a simulation with the second model, download the codes <a href="https://github.com/Host-pathogen-evol/TSL-PROJECT-A/tree/master/SECOND_MODEL">here</a>.
-        You will need <a href="http://www.scipy.org/scipylib/download.html">numpy</a> installed on your computer.</p>
+        You will need <a href="http://www.scipy.org/scipylib/download.html">NumPy</a> installed on your computer.</p>
         <p>You can have a full list of options running</p>
         <code>$python hpmodel2.py -h</code>
         <p>We suggest to seed the random number generator with the <code>-s</code> or <code>--seed</code> option, as the program is using a default seed.</p>
@@ -191,10 +191,10 @@
         <p><code>$python comparison_plot.py [path 1st dir] [path 2nd dir] [path 3rd dir] [path 4th dir] [path 5th dir]</code></p>
         <p><code>$python comparison_plot_derivatives.py [path 1st dir] [path 2nd dir] [path 3rd dir] [path 4th dir] [path 5th dir]</code></p>
     <p>Again, these will plot length and number of units over time and their derivatives, comparing the results if you run the simulation multiple
-    times and you want to compare the results between different time gaps or different mutation rate. This two scripts assumes you run a simulation
+    times and you want to compare the results between different time gaps or different mutation rate. This two scripts assume you run a simulation
     like ours and you provided DT5000, DT10000, DT15000, DT20000 and no jumps. If you run different simulations and want to compare the results you will need
     to change a number of parameters in the code.</p>
-    <p>You may also want to run the following scripts to get plots with the length distribution of effectors and TEs</p>
+    <p>You may also want to run the following scripts to get plots with the length distribution of effectors and TEs:</p>
         <p><code>$python scatter_plot_jumps.py [path 1st dir] [path 2nd dir] [path 3rd dir] [path 4th dir] [path 5th dir] [number of runs]</code></p>
         <p><code>$python scatter_plot_jumps_tes.py [path 1st dir] [path 2nd dir] [path 3rd dir] [path 4th dir] [path 5th dir] [number of runs]</code></p>
     <p>Again, it is assumed you run the simulation with the parameters of DT that we used, if not check the code. You do not need to run <code>clusterV.py</code>
