@@ -40,10 +40,10 @@
 
     <p>This page contains a simple presentations of the models and the documentation for python and Ipython modules written for the
     host-pathogen models detailed in <a href="http://calugo.github.io/blog/2014/10/14/genome-evolution-in-host-pathogen-systems/">Carlos Lugo's website</a>,
-    as well as an extremily brief description of our results, that will be presented in a more detailed fashion, explaining the effect of different parameters, in some other place.</p>
+    as well as an extremely brief description of our results, that will be presented in a more detailed fashion, explaining the effect of different parameters, in some other place.</p>
 
     <p>The project was born in <a href="http://www.tsl.ac.uk/groups/bioinformatics/">TSL Bioinformatics Group</a>, as a mean to model the evolution of plant pathogen’s genomes,
-        in particoular oomycetes' as <em>Phytophthora infestans</em>.</p>
+        in particular oomycetes' as <em>Phytophthora infestans</em>.</p>
     <p>We developed two different mathematical-computational models to explore the changes in genome size and number of effector genes and transposable elements.
         One of the main interests was to investigate the effects of TEs on genome size, that is observed as increasing in oomycetes.
         The other purpose of the study was to model both the population dynamics and the genome changes after host jumps.</p>
@@ -117,7 +117,7 @@
         <p>To run a simulation of the first model you can download the codes <a href="https://github.com/Host-pathogen-evol/TSL-PROJECT-A/tree/master/FIRST_MODEL">here</a>.</p>
         <p>There are a lot of parameters you may want to change, you can have a full list of them by running</p>
         <code>$python mprostest.py -h</code>
-        <p>Plese note that you will need to previously install <a href="http://www.scipy.org/scipylib/download.html">numpy</a> and <a href="http://sourceforge.net/projects/pygsl/">pygsl</a> to run the simulation.</p>
+        <p>Please note that you will need to previously install <a href="http://www.scipy.org/scipylib/download.html">numpy</a> and <a href="http://sourceforge.net/projects/pygsl/">pygsl</a> to run the simulation.</p>
         <p>Also, we suggest to seed the random number generator with the <code>-s</code> or <code>--seed</code> option, as the program is using a default seed.</p>
         <p>It is advisable to set the path to a new folder not to overwrite previous results, and because the program could produce a large
             amount of folders.</p>
@@ -129,7 +129,7 @@
         <a name="second_model"></a><h2><bold>Second Model</bold></h2>
 
         <p>In the second model we decided not to explicitly consider transposable elements anymore, as their evolution pattern resulted quite clear from the
-        first model, and there are no other known biological effects today to add in the model. In particoular it is not proved that they have an effect on the pathogen fitness,
+        first model, and there are no other known biological effects today to add in the model. In particular it is not proved that they have an effect on the pathogen fitness,
         other than contributing to silencing or general genome plasticity, both of which can be implicitly considered modifying accordingly
         the rates of mutation/recombination, silencing, hgt and duplication.</p>
         <p>In this model effectors are characterized by a length and a list of target genes, each one with a score.</p>
@@ -183,7 +183,7 @@
         <ul>
             <li>length of the whole genome, effector genes and transposable elements over time for one run;</li>
             <li>number of units in the genome, number of effectors and TEs over time in one run;</li>
-            <li>random walk, i.e. the relationship between number of Tes and number of effector genes;</li>
+            <li>random walk, i.e. the relationship between number of TEs and number of effector genes;</li>
             <li>average length of the whole genome, effector genes and transposable elements over time;</li>
             <li>average number of units in the genome, number of effectors and TEs over time.</li>
         </ul>
@@ -195,8 +195,8 @@
     like ours and you provided DT5000, DT10000, DT15000, DT20000 and no jumps. If you run different simulations and want to compare the results you will need
     to change a number of parameters in the code.</p>
     <p>You may also want to run the following scripts to get plots with the length distribution of effectors and TEs</p>
-        <p><code>$python scatter_plot_jumps.py [path 1st dir] [path 2nd dir] [path 3rd dir] [path 4th dir] [path 5th dir] [numer of runs]</code></p>
-        <p><code>$python scatter_plot_jumps_tes.py [path 1st dir] [path 2nd dir] [path 3rd dir] [path 4th dir] [path 5th dir] [numer of runs]</code></p>
+        <p><code>$python scatter_plot_jumps.py [path 1st dir] [path 2nd dir] [path 3rd dir] [path 4th dir] [path 5th dir] [number of runs]</code></p>
+        <p><code>$python scatter_plot_jumps_tes.py [path 1st dir] [path 2nd dir] [path 3rd dir] [path 4th dir] [path 5th dir] [number of runs]</code></p>
     <p>Again, it is assumed you run the simulation with the parameters of DT that we used, if not check the code. You do not need to run <code>clusterV.py</code>
         before these.</p>
     <p>You can also plot the average fitness of the pathogen (you can have a full list of options with <code>-h</code>) or the fitness in one simulation:</p>
