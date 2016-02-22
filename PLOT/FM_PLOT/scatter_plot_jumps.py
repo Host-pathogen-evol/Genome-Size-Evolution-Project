@@ -61,7 +61,7 @@ for key in diz_pths:
 #plotting distribution of len for each c value comparing different DTs
 for c_value in nX:
 
-    for time_gap in [pth41,pth2,pth3,pth4,pth5]:
+    for time_gap in [pth1,pth2,pth3,pth4,pth5]:
 
         fig, axesa = plt.subplots(1,figsize=(16, 8))
         if time_gap==pth1:
