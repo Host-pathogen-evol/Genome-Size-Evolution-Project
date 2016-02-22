@@ -18,6 +18,7 @@ from pygsl import rng as rn
 import Lffit, LffitB
 import pdt
 import argparse
+from multiprocessing import Process, Queue
 
 parser=argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,epilog=("""
 """))
