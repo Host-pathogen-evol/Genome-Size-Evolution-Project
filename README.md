@@ -1,5 +1,5 @@
 
-#Genome Length Evolution in Host-Pathogen systems
+# Genome Evolution in Host-Pathogen systems
 
 This page contains the documentation for python and Ipython modules written for the
 host-pathogen model detailed in [Carlos Lugo's site](http://calugo.github.io/blog/2014/10/14/genome-evolution-in-host-pathogen-systems/)
